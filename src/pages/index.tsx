@@ -30,6 +30,10 @@ const todos = [
 const Home: NextPage = () => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
+  // const { data, isLoading, error } = trpc.example.hello.useQuery({
+  //   text: "from tRPC",
+  // });
+
   return (
     <>
       <Head>
@@ -44,7 +48,7 @@ const Home: NextPage = () => {
           </h1>
         </div>
         {todos.map((todo) => (
-          <div className="flex w-1/2 flex-col ">
+          <div className="flex w-1/2 flex-col" key={todo.id}>
             <div className="mt-8 flex flex-col">
               <p className=" text-2xl">{todo.title}</p>
               <p className="text-1xl text-white">{todo.description}</p>
